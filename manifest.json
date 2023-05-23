@@ -1,0 +1,17 @@
+{
+  "name": "Localpass",
+  "description": "Localpass",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "icons": {},
+  "author": "Codefoxdev",
+  "permissions": ["storage", "webNavigation", "scripting"],
+  "host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "./src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "./src/index.html"
+  }
+}

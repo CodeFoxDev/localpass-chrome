@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Localpass</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <style>
+    :root {
+      --background: #1B1B1F;
+      --overlay-1: #252531;
+      --overlay-2: #2E2F42;
+      --accent-1: #555B8C;
+      --accent-2: #7489F4;
+      --text: #F8F8FF;
+
+      --optimal: #009EFF;
+      --normal: #00AA61;
+      --action: #F0653B;
+      --risk: #F0616D;
+    }
+
+    html, body {
+      font-family: 'Ubuntu';
+      min-width: 390px;
+      min-height: 390px;
+      background: linear-gradient(to bottom right, var(--overlay-1), var(--background));
+      color: var(--text);
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      color: var(--text);
+    }
+    
+    h1, h2, h3, h4, h5, h6, p, a {
+      margin: 0;
+    }
+
+    nav {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    section {
+      margin-inline: 24px;
+    }
+
+    nav>label,
+    nav>.spacer {
+      width: 80px;
+      height: 80px;
+      padding: 24px;
+      border-radius: .6rem;
+    }
+
+    nav>label {
+      cursor: pointer;
+    }
+
+    nav>label>span {
+      font-size: 32px !important;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    nav>.header {
+      font-size: 22px;
+    }
+
+    section.welcome {
+      height: 128px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    section.welcome p.welcome,
+    section.welcome p.name {
+      font-size: 22px;
+    }
+
+    section.welcome p.name {
+      font-weight: 500;
+    }
+
+    section.buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    div.list-btn {
+      cursor: pointer;
+      background: var(--overlay-1);
+      border: 1px solid var(--overlay-2);
+      border-radius: 8px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 8px;
+    }
+    
+    div.list-btn>.icon {
+      background: var(--accent-1);
+      border-radius: 8px;
+      height: 32px;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+    }
+
+    div.list-btn>.title {
+      font-size: 1rem;
+    }
+
+    div.list-btn>div.spacer {
+      width: 100%;
+    }
+
+    div.list-btn>.status {
+      position: relative;
+      margin-inline: 16px 8px;
+      height: 32px;
+      font-size: 10;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    div.list-btn>.status::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: -16px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    div.list-btn>.status[data-status="optimal"]::before { background: var(--optimal); }
+    div.list-btn>.status[data-status="normal"]::before { background: var(--normal); }
+    div.list-btn>.status[data-status="action"]::before { background: var(--action); }
+    div.list-btn>.status[data-status="risk"]::before { background: var(--risk); }
+    
+    div.list-btn>.arrow {
+      height: 100%;
+      aspect-ratio: 1 / 1;
+    }
+
+    div.list-btn>.arrow>span {
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <input type="checkbox" name="nav-toggle" id="nav-toggle" hidden>
+    <nav>
+      <label for="nav-toggle">
+        <span class="material-symbols-rounded">
+          menu
+        </span>
+      </label>
+      <p class="header">Localpass</p>
+      <div class="spacer"></div>
+    </nav>
+    <section class="welcome">
+      <p class="welcome">Welcome back,</p>
+      <p class="name">{username}</p>
+    </section>
+    <section class="buttons" style="margin-bottom: 24px;">
+      <div class="list-btn">
+        <div class="icon">
+          <span class="material-symbols-rounded">
+            key
+          </span>
+        </div>
+        <p class="title">Passwords</p>
+        <div class="spacer"></div>
+        <div class="status" data-status="action">Action required</div>
+        <div class="arrow">
+          <span class="material-symbols-rounded">
+            arrow_forward
+          </span>
+        </div>
+      </div>
+      <div class="list-btn">
+        <div class="icon">
+          <span class="material-symbols-rounded">
+            timelapse
+          </span>
+        </div>
+        <p class="title">MFA</p>
+        <div class="spacer"></div>
+        <div class="status"></div>
+        <div class="arrow">
+          <span class="material-symbols-rounded">
+            arrow_forward
+          </span>
+        </div>
+      </div>
+      <div class="list-btn">
+        <div class="icon">
+          <span class="material-symbols-rounded">
+            save
+          </span>
+        </div>
+        <p class="title">Backups</p>
+        <div class="spacer"></div>
+        <div class="status" data-status="risk">Security risk</div>
+        <div class="arrow">
+          <span class="material-symbols-rounded">
+            arrow_forward
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
