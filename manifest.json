@@ -3,15 +3,35 @@
   "description": "Localpass",
   "version": "0.1.0",
   "manifest_version": 3,
-  "icons": {},
+  "icons": {
+    "16": "assets/icons/icon_16px.png",
+    "32": "assets/icons/icon_32px.png",
+    "48": "assets/icons/icon_48px.png",
+    "128": "assets/icons/icon_128px.png"
+  },
   "author": "Codefoxdev",
-  "permissions": ["storage", "webNavigation", "scripting"],
-  "host_permissions": ["https://*/*", "http://*/*"],
+  "permissions": [
+    "storage",
+    "webNavigation",
+    "scripting",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
   "background": {
     "service_worker": "./src/background.js",
     "type": "module"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./src/content.js"]
+    }
+  ],
   "action": {
-    "default_popup": "./src/index.html"
+    "default_popup": "./src/index.html",
+    "default_icon": "assets/icons/icon_128px.png"
   }
 }
